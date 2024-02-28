@@ -747,12 +747,16 @@ void MenuInit_Main(void)
 		txtbutton.m_click = button_click;
 	//
 	
+	// No quit confirmation
+	float show_confirm_quit = cvar("disable_confirm_quit") != 1;
+	if (show_confirm_quit) {
 	void(uielement_c this) button_click = {
 		localsound("sounds/menu.wav");
 		menu_current = menu_quitconfirm;
 		uitext_c taunt = (uitext_c)menu_quitconfirm.partner;
 		taunt.text = quit_taunts[floor(random(quit_taunts.length))];
 	};
+	}
 	uielement_c container = spawn(uielement_c, owner: menu_buttons, anchor: '0.5 0', justify: '0.5 0', size: '192 48', flags: UIFLAG::CLICKABLE);
 	uilocpicture_c lbutton = spawn(uilocpicture_c, owner: container, anchor: '0.5 0.5', justify: '0.5 0.5', size: '352 58',
 		image: menu_assets[MENU_IMG::DEPART], image2: menu_assets[MENU_IMG::DEPART_ACTIVE], fallback_txt: menu_assets_string[MENU_IMG::DEPART]);
