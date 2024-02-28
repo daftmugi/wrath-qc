@@ -705,6 +705,9 @@ float(string filename) fexists_pak = {
 // Reki (December 13 2023): From FTE, implementation from DOOMBRINGER
 void m_drawloading(vector screensize, float opaque);
 
+// EXT_DAFTMUGI
+float(string file1, string file2) sync_file = #670;
+
 // EXT_STEAM_REKI
 // void Menu_Steam_StatValue(string stat_name, float value)
 // void Menu_Steam_AchievementValue(string achievement_name, float value)

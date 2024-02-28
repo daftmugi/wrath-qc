@@ -2932,7 +2932,8 @@ float(string path) rmtree = #654;
 float (float yaw, float dist) walkmovedist = #655;
 void(float f) timescale = #656;
 
-
+// EXT_DAFTMUGI
+float(string file1, string file2) sync_file = #670;
 
 //DP_RM_CLIPGROUP
 //idea: Akari

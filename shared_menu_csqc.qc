@@ -12,7 +12,50 @@ string filename = substring (s,5,(strlen(s) -5));
 fremove(filename);
 };
 
-void(float istether) load_save_maps =
+void(float save_type) load_save_maps = {
+	read_currentprofileslot();
+
+	// tether=1, shrine=2, autosave=3
+	if (save_type < 1 || save_type > 3)
+		return;
+	local string save_type_names[] = {"", "tether", "shrine", "autosave"};
+	local string save_type_name = save_type_names[save_type];
+	local string working_dir = strcat("profiles/", profilename, "/maps");
+	local string saved_dir   = strcat("profiles/", profilename, "/", save_type_name, "/maps");
+
+	local string episodes[] = {"1", "2", "3"};
+	local string maps[] = {"intro", "hub", "boss", "1", "2", "3", "4", "5"};
+	local string map_name, map_sav, map_stats, saved_map_sav, saved_map_stats;
+	local float episode, map;
+
+	for (episode = 0; episode < episodes.length; episode++) {
+		for (map = 0; map < maps.length; map++) {
+			if (maps[map] == "intro") {
+				if (episode == 0)
+					map_name = "intro";
+				else
+					continue; // skip intro for other episodes
+			}
+			else if (maps[map] == "hub")
+				map_name = strcat("hub", episodes[episode]);
+			else if (maps[map] == "boss")
+				map_name = strcat("boss", episodes[episode]);
+			else
+				map_name = strcat("e", episodes[episode], "m", maps[map]);
+
+			map_sav         = strcat(working_dir, "/", map_name, ".sav");
+			map_stats       = strcat(working_dir, "/", map_name, ".stats");
+			saved_map_sav   = strcat(saved_dir, "/", map_name, ".sav");
+			saved_map_stats = strcat(saved_dir, "/", map_name, ".stats");
+
+			// sync map {sav,stats} files from saved dir to working dir
+			sync_file(saved_map_sav, map_sav);
+			sync_file(saved_map_stats, map_stats);
+		}
+	}
+};
+
+void(float istether) retail_load_save_maps =
 {
 	read_currentprofileslot();
 
@@ -26,7 +69,7 @@ void(float istether) load_save_maps =
 	e1m3map = strcat("data/profiles/", profilename, "/maps/e1m3.sav");
 	e1m4map = strcat("data/profiles/", profilename, "/maps/e1m4.sav");
 	e1m5map = strcat("data/profiles/", profilename, "/maps/e1m5.sav");
-	boss1map = strcat("data/profiles/", profilename, "/maps/boss1map.sav");
+	boss1map = strcat("data/profiles/", profilename, "/maps/boss1.sav");
 
 	if(fexists(intromap)) data_fremove (intromap);
 	if(fexists(hub1map)) data_fremove (hub1map);

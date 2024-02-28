@@ -106,7 +106,7 @@ void() remove_save_maps = {
 	e1m3map = strcat("data/profiles/", profilename, "/maps/e1m3.sav");
 	e1m4map = strcat("data/profiles/", profilename, "/maps/e1m4.sav");
 	e1m5map = strcat("data/profiles/", profilename, "/maps/e1m5.sav");
-	boss1map = strcat("data/profiles/", profilename, "/maps/boss1map.sav");
+	boss1map = strcat("data/profiles/", profilename, "/maps/boss1.sav");
 	
 	if (fexists(intromap))
 		fremove(intromap);
@@ -134,7 +134,7 @@ void() remove_save_maps = {
 	e1m3stat = strcat("data/profiles/", profilename, "/maps/e1m3.stats");
 	e1m4stat = strcat("data/profiles/", profilename, "/maps/e1m4.stats");
 	e1m5stat = strcat("data/profiles/", profilename, "/maps/e1m5.stats");
-	boss1stat = strcat("data/profiles/", profilename, "/maps/boss1stat.stats");
+	boss1stat = strcat("data/profiles/", profilename, "/maps/boss1.stats");
 
 	if (fexists(hub1stat))
 		fremove(hub1stat);
@@ -254,7 +254,51 @@ void(string filefrom, string fileto)fcopy_wrath =
 if(fexists(strcat ("data/",filefrom)))
 fcopy (filefrom, fileto);
 };
-void(float istether) copy_save_maps = { 
+
+void(float save_type) copy_save_maps = {
+	read_currentprofileslot();
+
+	// shrine=0, tether=1, autosave=2
+	if (save_type < 0 || save_type > 2)
+		return;
+	local string save_type_names[] = {"shrine", "tether", "autosave"};
+	local string save_type_name = save_type_names[save_type];
+	local string working_dir = strcat("profiles/", profilename, "/maps");
+	local string saved_dir   = strcat("profiles/", profilename, "/", save_type_name, "/maps");
+
+	local string episodes[] = {"1", "2", "3"};
+	local string maps[] = {"intro", "hub", "boss", "1", "2", "3", "4", "5"};
+	local string map_name, map_sav, map_stats, saved_map_sav, saved_map_stats;
+	local float episode, map;
+
+	for (episode = 0; episode < episodes.length; episode++) {
+		for (map = 0; map < maps.length; map++) {
+			if (maps[map] == "intro") {
+				if (episode == 0)
+					map_name = "intro";
+				else
+					continue; // skip intro for other episodes
+			}
+			else if (maps[map] == "hub")
+				map_name = strcat("hub", episodes[episode]);
+			else if (maps[map] == "boss")
+				map_name = strcat("boss", episodes[episode]);
+			else
+				map_name = strcat("e", episodes[episode], "m", maps[map]);
+
+			map_sav         = strcat(working_dir, "/", map_name, ".sav");
+			map_stats       = strcat(working_dir, "/", map_name, ".stats");
+			saved_map_sav   = strcat(saved_dir, "/", map_name, ".sav");
+			saved_map_stats = strcat(saved_dir, "/", map_name, ".stats");
+
+			// sync map {sav,stats} files from working dir to saved dir
+			sync_file(map_sav, saved_map_sav);
+			sync_file(map_stats, saved_map_stats);
+		}
+	}
+};
+
+void(float istether) retail_copy_save_maps = {
 	read_currentprofileslot();
 
 	string foldername;	
@@ -285,7 +329,7 @@ void(float istether) copy_save_maps = {
 	toe1m3map = strcat("profiles/", profilename, "/",foldername,"/maps/e1m3.sav");
 	toe1m4map = strcat("profiles/", profilename, "/",foldername,"/maps/e1m4.sav");
 	toe1m5map = strcat("profiles/", profilename, "/",foldername,"/maps/e1m5.sav");
-	toboss1map = strcat("profiles/", profilename, "/",foldername,"/maps/boss1map.sav");
+	toboss1map = strcat("profiles/", profilename, "/",foldername,"/maps/boss1.sav");
 
 	fcopy_wrath (intromap, tointromap);
 	fcopy_wrath (hub1map, tohub1map);

@@ -1414,6 +1414,9 @@ float(string filename) fexists_pak = {
 
 float sound_starttime; // Reki (October 6 2023): found this in the engine, not documented as far as I can tell :\
 
+// EXT_DAFTMUGI
+float(string file1, string file2) sync_file = #670;
+
 // EXT_STEAM_REKI
 // void CSQC_Steam_StatValue(string stat_name, float value)
 // void CSQC_Steam_AchievementValue(string achievement_name, float value)
