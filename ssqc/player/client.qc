@@ -3447,10 +3447,14 @@ void() RestoreGame =
 	float tetherlimit;
 
 		tetherlimit = 10000;
+	float limited_tethers = cvar("disable_tether_limit") != 1;
+	if(limited_tethers)
+	{
 	if(skill == 2)
 		tetherlimit = 9;
 	if(skill == 3)
 		tetherlimit = 3;
+	}
 
 
 

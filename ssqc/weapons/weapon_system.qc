@@ -3091,6 +3091,9 @@ void() WeaponFrames =
 	{	
 		float localsoultether = self.SoulTether;
 		float infinitesaves = cvar("infinite_saves");
+		float unlimited_tethers = cvar("disable_tether_limit") == 1;
+		if(unlimited_tethers && self.SoulTether < 1)
+			localsoultether = self.SoulTether = 1;
 		if(infinitesaves == 1)
 			localsoultether = 1;
 		if(( localsoultether >= 1) && (self.tether_global < time))
