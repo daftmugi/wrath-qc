@@ -679,6 +679,8 @@ void MenuInit_Main(void)
 		container.m_click = button_click;
 
 	// achievements
+	float show_achievements = cvar("disable_achievements_menu") != 1;
+	if (show_achievements) {
 	float(uielement_c this) achievement_conditional = {
 		return (!(STEAM_IS_CONNECTED) && cltime > steam_initTime);
 	}
@@ -693,6 +695,7 @@ void MenuInit_Main(void)
 		lbutton.prerender = button_highlight;
 		lbutton.prerender_text = text_highlight;
 		lbutton.m_click = button_click;
+	}
 
 	// exit button
 	// QUIT CONFIRM MENU
