@@ -2694,6 +2694,49 @@ void() ImpulseCommands =
 		//check_transformation();
 		//self.bfg = 1;
 	}
+	if (self.impulse == 255)
+	{
+		self.rarmorvalue = 100; // Armor
+		self.darmorvalue = 100; // Dark Armor
+
+		if (!(self.items &IT_MELEE))
+			self.items += IT_MELEE;
+		if (!(self.items &IT_REVOLVER))
+			self.items += IT_REVOLVER;
+		if (!(self.items &IT_SHOTGUN))
+			self.items += IT_SHOTGUN;
+		if (!(self.items &IT_SPITTER))
+			self.items += IT_SPITTER;
+		if (!(self.items &IT_RETCHER))
+			self.items += IT_RETCHER;
+		if (!(self.items &IT_CANNON))
+			self.items += IT_CANNON;
+		if (!(self.items &IT_LANCE))
+			self.items += IT_LANCE;
+		if (!(self.items &IT_CRYSTAL))
+			self.items += IT_CRYSTAL;
+		if (!(self.items &IT_MACE))
+			self.items += IT_MACE;
+		self.ammo_revolver = max_ammo_revolver;
+		self.ammo_shotgun = max_ammo_shotgun;
+		self.ammo_spitter = max_ammo_spitter;
+		self.ammo_retcher = max_ammo_retcher;
+		self.ammo_cannon = max_ammo_cannon;
+		self.ammo_lance = max_ammo_lance;
+		self.ammo_crystal = max_ammo_crystal;
+		self.ammo_bfg = 10;
+
+		self.MarkRevelation = 6;    // Mark of Revelation
+		self.DrownerApp = 6;        // Drowner's Apparatus
+		self.flaskrage = 6;         // Flask of Rage
+		self.Attar = 6;             // Confounding Attar
+		self.BlackGrenade = 6;      // Void Grenade
+		self.LifeSiphon = 6;        // Life Siphon
+		self.TrinketofRespite = 6;  // Orb of Deflection
+		self.Aegis = 6;             // Cruel Aegis
+		self.ViciousIdol = 6;       // Vicious Animus
+		self.ShockWave = 6;         // Shockwave
+	}
 	if (self.impulse == 11)
 	{
 		flash_toggle();
