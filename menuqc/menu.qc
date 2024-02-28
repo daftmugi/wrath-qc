@@ -203,6 +203,10 @@ void Overlay_AchievementShuffleUp(void)
 
 void Overlay_NewAchievement(string id, string name, string desc)
 {
+	float skip_notify = cvar("disable_achievements_notify") == 1;
+	if (skip_notify)
+		return;
+
 	achievement_notify_time = cltime + 1;
 	Overlay_AchievementShuffleUp();
 
