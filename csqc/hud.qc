@@ -2496,8 +2496,11 @@ local vector angulos, origen;
 	if (rmenu && rmenualpha >= 0.5)
 	{
 		vector force_ang = locked_viewangle;
+		float show_rmenu_motion = cvar("disable_rmenu_motion") != 1;
+		if (show_rmenu_motion) {
 		force_ang[0] += radial_pos[1] * 0.15;
 		force_ang[1] += radial_pos[0] * -0.15;
+		}
 		radial_viewmodel_ang = (force_ang - locked_viewangle);
 		radial_viewmodel_frac = 1;
 
