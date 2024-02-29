@@ -696,6 +696,10 @@ void CSQC_Parse_Print(string strMessage)
 // CSQC_Parse_CenterPrint : Provides the centerprint string in the first parameter that the server provided.  To execute standard behavior, simply execute cprint with the string.
 void CSQC_Parse_CenterPrint(string strMessage)
 {
+	float skip_help = cvar("disable_help_notify") == 1;
+	if (skip_help && substring(strMessage, 0, 6) == "$HELP_")
+		return;
+
 	if (substring(strMessage, 0, 1) == "&") // if first character is an '&' then we print to the dialog box
 	{
 		strMessage = substring(strMessage, 1, -1);
