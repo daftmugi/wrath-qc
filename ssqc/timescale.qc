@@ -36,7 +36,13 @@ void Timescale_RunFrame(void)
 			if (edict.deadflag)
 				timescale_wanted = min(timescale_wanted, 0.1);
 			else
+			{
+				float slowermo = cvar("enable_slowermo_load_menu") == 1;
+				if (slowermo)
+				timescale_wanted = min(timescale_wanted, 0.01);
+				else
 				timescale_wanted = min(timescale_wanted, 0.5);
+			}
 		}
 	}
 
