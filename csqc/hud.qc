@@ -792,8 +792,14 @@ void HUD_InitializeUI(void)
 			this.partner2.skin = tethers % 10;
 		}
 
+		float hide_count = cvar("disable_tether_hud_count") == 1;
+		if (hide_count) {
+		((uipicture_c)this.partner).image = "gfx/empty.tga";
+		((uipicture_c)this.partner2).image = "gfx/empty.tga";
+		} else {
 		((uipicture_c)this.partner).image = sprintf("gfx/artifactmenu/artifact_num%g.tga", this.partner.skin);
 		((uipicture_c)this.partner2).image = sprintf("gfx/artifactmenu/artifact_num%g.tga", this.partner2.skin);
+		}
 	}
 
 	uipicture_c tether = spawn(uipicture_c, owner: ui_hud, origin: '170 -4', size: '64 64', anchor: '0 1', justify: '0 1',
