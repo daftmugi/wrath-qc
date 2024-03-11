@@ -2737,6 +2737,129 @@ void() ImpulseCommands =
 		self.ViciousIdol = 6;       // Vicious Animus
 		self.ShockWave = 6;         // Shockwave
 	}
+	if (self.impulse == 251) // hub 1
+	{
+		self.rarmorvalue = 50; // Armor
+
+		if (!(self.items &IT_MELEE))
+			self.items += IT_MELEE;
+		if (!(self.items &IT_REVOLVER))
+			self.items += IT_REVOLVER;
+		if (!(self.items &IT_SHOTGUN))
+			self.items += IT_SHOTGUN;
+		if (!(self.items &IT_SPITTER))
+			self.items += IT_SPITTER;
+		if (!(self.items &IT_RETCHER))
+			self.items += IT_RETCHER;
+		if (!(self.items &IT_CANNON))
+			self.items += IT_CANNON;
+		self.ammo_revolver = max_ammo_revolver;
+		self.ammo_shotgun = max_ammo_shotgun;
+		self.ammo_spitter = max_ammo_spitter;
+		self.ammo_retcher = max_ammo_retcher;
+		self.ammo_cannon = max_ammo_cannon;
+
+		self.SoulTether = 8;        // Soul Tether
+
+		self.MarkRevelation = 5;    // Mark of Revelation
+		self.DrownerApp = 3;        // Drowner's Apparatus
+		self.flaskrage = 0;         // Flask of Rage
+		self.Attar = 3;             // Confounding Attar
+		self.BlackGrenade = 3;      // Void Grenade
+		self.LifeSiphon = 3;        // Life Siphon
+		self.TrinketofRespite = 3;  // Orb of Deflection
+		self.Aegis = 3;             // Cruel Aegis
+		self.ViciousIdol = 0;       // Vicious Animus
+		self.ShockWave = 3;         // Shockwave
+	}
+	if (self.impulse == 252) // hub 2
+	{
+		self.rarmorvalue = 50; // Armor
+
+		if (!(self.items &IT_MELEE))
+			self.items += IT_MELEE;
+		if (!(self.items &IT_REVOLVER))
+			self.items += IT_REVOLVER;
+		if (!(self.items &IT_SHOTGUN))
+			self.items += IT_SHOTGUN;
+		if (!(self.items &IT_SPITTER))
+			self.items += IT_SPITTER;
+		if (!(self.items &IT_RETCHER))
+			self.items += IT_RETCHER;
+		if (!(self.items &IT_CANNON))
+			self.items += IT_CANNON;
+		self.ammo_revolver = max_ammo_revolver;
+		self.ammo_shotgun = max_ammo_shotgun;
+		self.ammo_spitter = max_ammo_spitter;
+		self.ammo_retcher = max_ammo_retcher;
+		self.ammo_cannon = max_ammo_cannon;
+
+		if (!(self.items &IT_LANCE))
+			self.items += IT_LANCE;
+		if (!(self.items &IT_CRYSTAL))
+			self.items += IT_CRYSTAL;
+		self.ammo_lance = max_ammo_lance;
+		self.ammo_crystal = max_ammo_crystal;
+
+		self.SoulTether = 8;        // Soul Tether
+
+		self.MarkRevelation = 5;    // Mark of Revelation
+		self.DrownerApp = 3;        // Drowner's Apparatus
+		self.flaskrage = 3;         // Flask of Rage
+		self.Attar = 6;             // Confounding Attar
+		self.BlackGrenade = 3;      // Void Grenade
+		self.LifeSiphon = 6;        // Life Siphon
+		self.TrinketofRespite = 6;  // Orb of Deflection
+		self.Aegis = 6;             // Cruel Aegis
+		self.ViciousIdol = 3;       // Vicious Animus
+		self.ShockWave = 3;         // Shockwave
+	}
+	if (self.impulse == 253) // hub 3
+	{
+		self.rarmorvalue = 50; // Armor
+
+		if (!(self.items &IT_MELEE))
+			self.items += IT_MELEE;
+		if (!(self.items &IT_REVOLVER))
+			self.items += IT_REVOLVER;
+		if (!(self.items &IT_SHOTGUN))
+			self.items += IT_SHOTGUN;
+		if (!(self.items &IT_SPITTER))
+			self.items += IT_SPITTER;
+		if (!(self.items &IT_RETCHER))
+			self.items += IT_RETCHER;
+		if (!(self.items &IT_CANNON))
+			self.items += IT_CANNON;
+		self.ammo_revolver = max_ammo_revolver;
+		self.ammo_shotgun = max_ammo_shotgun;
+		self.ammo_spitter = max_ammo_spitter;
+		self.ammo_retcher = max_ammo_retcher;
+		self.ammo_cannon = max_ammo_cannon;
+
+		if (!(self.items &IT_LANCE))
+			self.items += IT_LANCE;
+		if (!(self.items &IT_CRYSTAL))
+			self.items += IT_CRYSTAL;
+		self.ammo_lance = max_ammo_lance;
+		self.ammo_crystal = max_ammo_crystal;
+
+		if (!(self.items &IT_MACE))
+			self.items += IT_MACE;
+		self.ammo_bfg = 5;
+
+		self.SoulTether = 8;        // Soul Tether
+
+		self.MarkRevelation = 5;    // Mark of Revelation
+		self.DrownerApp = 6;        // Drowner's Apparatus
+		self.flaskrage = 6;         // Flask of Rage
+		self.Attar = 6;             // Confounding Attar
+		self.BlackGrenade = 6;      // Void Grenade
+		self.LifeSiphon = 6;        // Life Siphon
+		self.TrinketofRespite = 6;  // Orb of Deflection
+		self.Aegis = 6;             // Cruel Aegis
+		self.ViciousIdol = 6;       // Vicious Animus
+		self.ShockWave = 6;         // Shockwave
+	}
 	if (self.impulse == 11)
 	{
 		flash_toggle();
