@@ -335,6 +335,9 @@ void Hud_FullNotification(entity ownr)
 
 void Hud_JournalNotification(entity ownr)
 {
+	float skip_notify = cvar("disable_journal_notify") == 1;
+	if (skip_notify)
+		return;
 	Hud_SendNotification(ownr, "journal_update", ("$NOTIFY_JOURNALUPDATED"));
 }
 
