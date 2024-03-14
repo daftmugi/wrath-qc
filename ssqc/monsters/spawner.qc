@@ -20,6 +20,10 @@ void() check_relics =
 	if(skill >= 3)
 		plrelics = 4;
 
+	float encounter_override = cvar("encounter_override");
+	if (encounter_override > 0)
+		plrelics = encounter_override - 1;
+
 	if (!plrelics)
 		return;
 	if (plrelics == 1)
@@ -111,6 +115,10 @@ void() recount_monsters =
 
 	if(skill >= 3)
 		plrelics = 4;
+
+	float encounter_override = cvar("encounter_override");
+	if (encounter_override > 0)
+		plrelics = encounter_override - 1;
 
 	while (spawner)
 	{
