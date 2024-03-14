@@ -153,6 +153,7 @@ void() recount_monsters =
 
 
 void() enemy_spawner_use = {
+	check_relics();
 	
 	if (self.warped != 1)
 	{
