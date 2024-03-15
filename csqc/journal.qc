@@ -298,7 +298,11 @@ void Journal_Init(void)
 					map_label.prerender_text = map_prerendertext;
 					map_label.m_click = map_click;
 
+				float print_journal_init = cvar("disable_journal_init_info") != 1;
+				if (print_journal_init)
+				{
 				print(sprintf("%s: %s\n", __func__, journal_label_assets[mapitem.label_index + 1]));
+				}
 				
 				uipicture_c map_page = spawn(uipicture_c, owner: page2, size: '216 304',
 					image: journal_page_assets[mapitem.page_index], skin: mapitem.itflag, colormap: mapitem.stattype, partner: map_label);
