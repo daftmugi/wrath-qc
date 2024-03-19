@@ -1795,7 +1795,8 @@ void() monster_fallen = { precache_model("models/enemies/fallen/gibs/gib_torso_b
 
 
 
-	if((day == 27) && (month == 2)) // wraths birthday!
+	// if((day == 27) && (month == 2)) // wraths birthday!
+	if(cvar("enable_melon_head") == 1)
 	{
         float rdate = random() * 1;
         if (rdate < 0.4)
