@@ -2699,24 +2699,16 @@ void() ImpulseCommands =
 		self.rarmorvalue = 100; // Armor
 		self.darmorvalue = 100; // Dark Armor
 
-		if (!(self.items &IT_MELEE))
-			self.items += IT_MELEE;
-		if (!(self.items &IT_REVOLVER))
-			self.items += IT_REVOLVER;
-		if (!(self.items &IT_SHOTGUN))
-			self.items += IT_SHOTGUN;
-		if (!(self.items &IT_SPITTER))
-			self.items += IT_SPITTER;
-		if (!(self.items &IT_RETCHER))
-			self.items += IT_RETCHER;
-		if (!(self.items &IT_CANNON))
-			self.items += IT_CANNON;
-		if (!(self.items &IT_LANCE))
-			self.items += IT_LANCE;
-		if (!(self.items &IT_CRYSTAL))
-			self.items += IT_CRYSTAL;
-		if (!(self.items &IT_MACE))
-			self.items += IT_MACE;
+		self.items |= IT_MELEE;
+		self.items |= IT_REVOLVER;
+		self.items |= IT_SHOTGUN;
+		self.items |= IT_SPITTER;
+		self.items |= IT_RETCHER;
+		self.items |= IT_CANNON;
+		self.items |= IT_LANCE;
+		self.items |= IT_CRYSTAL;
+		self.items |= IT_MACE;
+
 		self.ammo_revolver = max_ammo_revolver;
 		self.ammo_shotgun = max_ammo_shotgun;
 		self.ammo_spitter = max_ammo_spitter;
